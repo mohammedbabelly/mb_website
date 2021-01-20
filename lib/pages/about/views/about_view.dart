@@ -1,13 +1,16 @@
+import 'package:animate_icons/animate_icons.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mb_website/widgets/drawer.dart';
 
-import '../about_controller.dart';
+import '../controllers/about_controller.dart';
 
 class AboutView extends GetResponsiveView<AboutController> {
+  var inContext;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext c) {
     return Scaffold(
       body: Center(
           child: Column(
@@ -36,6 +39,18 @@ class AboutView extends GetResponsiveView<AboutController> {
           ),
         ],
       )),
+      floatingActionButton: Builder(
+        builder: (context) {
+          inContext = context;
+          return IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () => Scaffold.of(inContext).openDrawer(),
+            iconSize: 30.0,
+          );
+        },
+      ),
+      drawer: AppDrawer(
+          context: c, controller: controller.animateIconController.value),
     );
   }
 }

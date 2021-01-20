@@ -1,4 +1,4 @@
-import 'package:mb_website/pages/about/about_controller.dart';
+import 'package:mb_website/pages/about/controllers/about_controller.dart';
 
 class Seeds {
   static AboutModel about = AboutModel(

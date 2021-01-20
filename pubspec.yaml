@@ -45,6 +45,8 @@ dependencies:
 
   get: ^3.24.0
 
+  animate_icons: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
