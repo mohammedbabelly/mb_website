@@ -1,11 +1,20 @@
-import 'package:animate_icons/animate_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animator/flutter_animator.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mb_website/pages/home_page/controllers/home_page_controller.dart';
+import 'package:mb_website/routes/routes.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends GetResponsiveView<HomePageController> {
   final context;
-  final controller;
-  AppDrawer({this.context, this.controller});
+  // final controller;
+  AppDrawer({this.context});
+
+  final GlobalKey<AnimatorWidgetState> key1 = GlobalKey<AnimatorWidgetState>();
+  final GlobalKey<AnimatorWidgetState> key2 = GlobalKey<AnimatorWidgetState>();
+  final GlobalKey<AnimatorWidgetState> key3 = GlobalKey<AnimatorWidgetState>();
+  final GlobalKey<AnimatorWidgetState> key4 = GlobalKey<AnimatorWidgetState>();
+
   @override
   Widget build(_) {
     return Container(
@@ -18,23 +27,53 @@ class AppDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(padding: EdgeInsets.only(top: 20)),
                 Text(''),
                 Text(''),
-                Text(
-                  'about',
-                  style: drawerItemStyle,
+                InkWell(
+                  onTap: () {},
+                  child: FadeInDown(
+                      key: key1,
+                      child: Text('about',
+                          style: controller.activePage.value == AppRoutes.about
+                              ? drawerInactiveItemStyle
+                              : drawerActiveItemStyle)),
                 ),
-                Text(
-                  'projects',
-                  style: drawerItemStyle,
+                InkWell(
+                  onTap: () {},
+                  child: FadeInLeft(
+                    key: key2,
+                    child: Text(
+                      'projects',
+                      style: controller.activePage.value == AppRoutes.projects
+                          ? drawerInactiveItemStyle
+                          : drawerActiveItemStyle,
+                    ),
+                  ),
                 ),
-                Text(
-                  'experience',
-                  style: drawerItemStyle,
+                InkWell(
+                  onTap: () {},
+                  child: FadeInRight(
+                    key: key3,
+                    child: Text(
+                      'experience',
+                      style: controller.activePage.value == AppRoutes.experience
+                          ? drawerInactiveItemStyle
+                          : drawerActiveItemStyle,
+                    ),
+                  ),
                 ),
-                Text(
-                  'contact',
-                  style: drawerItemStyle,
+                InkWell(
+                  onTap: () {},
+                  child: FadeInUp(
+                    key: key4,
+                    child: Text(
+                      'contact',
+                      style: controller.activePage.value == AppRoutes.contact
+                          ? drawerInactiveItemStyle
+                          : drawerActiveItemStyle,
+                    ),
+                  ),
                 ),
                 Text(''),
                 Text(''),
@@ -44,31 +83,17 @@ class AppDrawer extends StatelessWidget {
                 alignment: Alignment(0.95, 0.95),
                 child: IconButton(
                   icon: Icon(Icons.close),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () {
+                    key1.currentState.reverse();
+                    key2.currentState.reverse();
+                    key3.currentState.reverse();
+                    key4.currentState.reverse();
+                    Future.delayed(Duration(milliseconds: 500), () {
+                      Navigator.of(context).pop();
+                    });
+                  },
                   iconSize: 30.0,
-                )
-                // AnimateIcons(
-                //   startIcon: Icons.menu,
-                //   endIcon: Icons.close,
-                //   size: 30.0,
-                //   controller: controller,
-                //   startTooltip: 'Icons.add_circle',
-                //   endTooltip: 'Icons.add_circle_outline',
-                //   onStartIconPress: () {
-                //     // Scaffold.of(context).openDrawer();
-                //     Navigator.of(context).pop();
-                //     return true;
-                //   },
-                //   onEndIconPress: () {
-                //     // Scaffold.of(context).openDrawer();
-                //     Navigator.of(context).pop();
-                //     return true;
-                //   },
-                //   duration: Duration(milliseconds: 200),
-                //   color: Theme.of(context).accentColor,
-                //   clockwise: false,
-                // ),
-                )
+                ))
           ],
         ),
       ),
@@ -76,5 +101,7 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
-TextStyle drawerItemStyle = GoogleFonts.montserrat(
+TextStyle drawerActiveItemStyle = GoogleFonts.montserrat(
     fontSize: 30, fontWeight: FontWeight.w500, color: Color(0xff9f9f9f));
+TextStyle drawerInactiveItemStyle = GoogleFonts.montserrat(
+    fontSize: 30, fontWeight: FontWeight.w600, color: Colors.white);
