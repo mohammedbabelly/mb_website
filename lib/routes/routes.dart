@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:mb_website/pages/about/controllers/about_controller.dart';
 import 'package:mb_website/pages/about/views/about_view.dart';
+import 'package:mb_website/pages/experience/views/experience_view.dart';
 import 'package:mb_website/pages/home_page/controllers/home_page_controller.dart';
 import 'package:mb_website/pages/home_page/views/home_page_view.dart';
 import 'package:qlevar_router/qlevar_router.dart';
@@ -32,6 +33,13 @@ class AppRoutes {
                   () => AboutController(Seeds.about)),
               onDispose: () => Get.delete<AboutController>(),
               page: (child) => AboutView()),
+          QRoute(
+              name: experience,
+              path: '/experience',
+              // onInit: () => Get.lazyPut<AboutController>(
+              //     () => AboutController(Seeds.about)),
+              // onDispose: () => Get.delete<AboutController>(),
+              page: (child) => ExperienceView()),
         ]),
   ];
 }

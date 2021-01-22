@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mb_website/pages/home_page/controllers/home_page_controller.dart';
 import 'package:mb_website/routes/routes.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 class AppDrawer extends GetResponsiveView<HomePageController> {
   final context;
@@ -31,7 +32,7 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                 Text(''),
                 Text(''),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => QR.to('home/about'),
                   child: FadeInDown(
                       key: key1,
                       child: Text('about',
@@ -52,7 +53,7 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => _goTo('home/experience', context),
                   child: FadeInRight(
                     key: key3,
                     child: Text(
@@ -99,6 +100,11 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
       ),
     );
   }
+}
+
+void _goTo(path, context) {
+  QR.to(path);
+  Navigator.of(context).pop();
 }
 
 TextStyle drawerActiveItemStyle = GoogleFonts.montserrat(

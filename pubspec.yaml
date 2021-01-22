@@ -35,11 +35,11 @@ dependencies:
 
   flutter_awesome_alert_box: ^1.0.1
 
-  blobs: ^1.2.0
+  blobs: ^1.2.0 #remove
 
   flutter_animator: ^2.1.0
 
-  scratcher: ^1.4.0
+  scratcher: ^1.4.0 #remove
 
   slimy_card: ^1.0.4
 
@@ -48,6 +48,8 @@ dependencies:
   animate_icons: ^1.0.0
 
   qlevar_router: ^0.2.2
+
+  timelines: ^0.0.2+1
 
 dev_dependencies:
   flutter_test:

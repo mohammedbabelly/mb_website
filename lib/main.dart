@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerDelegate: QR.router(AppRoutes().routes, initRoute: '/home/about'),
+      routerDelegate:
+          QR.router(AppRoutes().routes, initRoute: '/home/experience'),
       routeInformationParser: QR.routeParser(),
       title: 'Mohammed Babelly',
       darkTheme: ThemeData(
