@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mb_website/pages/about/bindings/about_bining.dart';
-
-import 'pages/about/views/about_view.dart';
+import 'package:mb_website/routes/routes.dart';
+import 'package:qlevar_router/qlevar_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,8 +9,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'MB website',
+    return MaterialApp.router(
+      routerDelegate: QR.router(AppRoutes().routes, initRoute: '/home/about'),
+      routeInformationParser: QR.routeParser(),
+      title: 'Mohammed Babelly',
       darkTheme: ThemeData(
         primarySwatch: Colors.grey,
         primaryColor: Colors.black,
@@ -24,11 +24,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF2F2F2F),
       ),
       themeMode: ThemeMode.dark,
-      initialRoute: '/about',
-      getPages: [
-        GetPage(
-            name: '/about', page: () => AboutView(), binding: AboutBinding()),
-      ],
     );
   }
 }

@@ -263,6 +263,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.13"
+  qlevar_router:
+    dependency: "direct main"
+    description:
+      name: qlevar_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.2"
   scratcher:
     dependency: "direct main"
     description:
