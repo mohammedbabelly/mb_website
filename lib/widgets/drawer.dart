@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mb_website/data/colors/app_colors.dart';
 import 'package:mb_website/pages/home_page/controllers/home_page_controller.dart';
 import 'package:mb_website/routes/routes.dart';
 import 'package:qlevar_router/qlevar_router.dart';
@@ -32,13 +33,13 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                 Text(''),
                 Text(''),
                 InkWell(
-                  onTap: () => QR.to('home/about'),
+                  onTap: () => _goTo('home/about', context),
                   child: FadeInDown(
                       key: key1,
                       child: Text('about',
                           style: controller.activePage.value == AppRoutes.about
-                              ? drawerInactiveItemStyle
-                              : drawerActiveItemStyle)),
+                              ? drawerActiveItemStyle
+                              : drawerInactiveItemStyle)),
                 ),
                 InkWell(
                   onTap: () {},
@@ -47,8 +48,8 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                     child: Text(
                       'projects',
                       style: controller.activePage.value == AppRoutes.projects
-                          ? drawerInactiveItemStyle
-                          : drawerActiveItemStyle,
+                          ? drawerActiveItemStyle
+                          : drawerInactiveItemStyle,
                     ),
                   ),
                 ),
@@ -59,8 +60,8 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                     child: Text(
                       'experience',
                       style: controller.activePage.value == AppRoutes.experience
-                          ? drawerInactiveItemStyle
-                          : drawerActiveItemStyle,
+                          ? drawerActiveItemStyle
+                          : drawerInactiveItemStyle,
                     ),
                   ),
                 ),
@@ -71,8 +72,8 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                     child: Text(
                       'contact',
                       style: controller.activePage.value == AppRoutes.contact
-                          ? drawerInactiveItemStyle
-                          : drawerActiveItemStyle,
+                          ? drawerActiveItemStyle
+                          : drawerInactiveItemStyle,
                     ),
                   ),
                 ),
@@ -107,7 +108,7 @@ void _goTo(path, context) {
   Navigator.of(context).pop();
 }
 
-TextStyle drawerActiveItemStyle = GoogleFonts.montserrat(
-    fontSize: 30, fontWeight: FontWeight.w500, color: Color(0xff9f9f9f));
 TextStyle drawerInactiveItemStyle = GoogleFonts.montserrat(
+    fontSize: 30, fontWeight: FontWeight.w500, color: TextColors.body);
+TextStyle drawerActiveItemStyle = GoogleFonts.montserrat(
     fontSize: 30, fontWeight: FontWeight.w600, color: Colors.white);

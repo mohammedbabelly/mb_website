@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mb_website/data/colors/app_colors.dart';
+import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:timelines/timelines.dart';
 
-const kTileHeight = 50.0;
+const indicatorColor = Color(0xff989898);
 
 class ExperienceView extends StatelessWidget {
   @override
@@ -15,7 +17,7 @@ class ExperienceView extends StatelessWidget {
             child: FixedTimeline.tileBuilder(
               theme: TimelineThemeData(
                 nodePosition: 0,
-                color: Color(0xff989898),
+                color: indicatorColor,
                 indicatorTheme: IndicatorThemeData(
                   position: 0,
                   size: 40.0,
@@ -26,7 +28,7 @@ class ExperienceView extends StatelessWidget {
               ),
               builder: TimelineTileBuilder.connected(
                 connectionDirection: ConnectionDirection.before,
-                itemCount: 5,
+                itemCount: Seeds.experiences.length,
                 contentsBuilder: (_, index) {
                   return Padding(
                     padding: EdgeInsets.only(left: 8.0),
@@ -34,36 +36,27 @@ class ExperienceView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text('ACM CONTESTANT',
+                        Text(Seeds.experiences[index].title,
                             style: GoogleFonts.montserrat(
                                 fontSize: 30,
-                                color: Color(0xffcacaca),
+                                color: TextColors.head,
                                 fontWeight: FontWeight.w500)),
                         _InnerTimeline(
-                          points: [
-                            'message1',
-                            'message2',
-                          ],
-                          subHead: 'Syrian Collegiate Programming Contest ',
-                          date: '2018-2019',
+                          points: Seeds.experiences[index].points,
+                          subHead: Seeds.experiences[index].company,
+                          date: Seeds.experiences[index].date,
                         ),
-                        SizedBox(height: 30),
                       ],
                     ),
                   );
                 },
                 indicatorBuilder: (_, index) {
-                  return DotIndicator(
-                    color: Color(0xff66c97f),
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: 12.0,
-                    ),
-                  );
+                  return DotIndicator(color: indicatorColor
+                      // child: Center(child: Text('${index + 1}'))
+                      );
                 },
                 connectorBuilder: (_, index, ___) =>
-                    SolidLineConnector(color: Color(0xff66c97f)),
+                    SolidLineConnector(color: indicatorColor),
               ),
             ),
           ),
@@ -92,14 +85,15 @@ class _InnerTimeline extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(subHead,
                   style: GoogleFonts.lato(
                       fontStyle: FontStyle.italic,
                       fontSize: 24,
                       fontWeight: FontWeight.w300,
-                      color: Color(0xffcacaca))),
+                      color: TextColors.head)),
               Text(date),
             ],
           ),
@@ -125,11 +119,11 @@ class _InnerTimeline extends StatelessWidget {
                 }
 
                 return Padding(
-                  padding: EdgeInsets.only(left: 8.0),
+                  padding: EdgeInsets.all(10.0),
                   child: Text(points[index - 1].toString()),
                 );
               },
-              itemExtentBuilder: (_, index) => isEdgeIndex(index) ? 10.0 : 30.0,
+              // itemExtentBuilder: (_, index) => 30.0,
               nodeItemOverlapBuilder: (_, index) =>
                   isEdgeIndex(index) ? true : null,
               itemCount: points.length + 2,

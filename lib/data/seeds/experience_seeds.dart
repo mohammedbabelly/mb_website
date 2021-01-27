@@ -32,7 +32,7 @@ List<Experience> experiencesSeed = [
       company: 'Freelancer',
       date: '2018 – present',
       points: [
-        'Worked with international clients and ensure the proper delivery of work, keeping in mind time zones and schedule regular stand-up meetings.'
-            'Ease the process of following up on apps stakeholders by dividing the project into milestones.'
+        'Worked with international clients and ensure the proper delivery of work, keeping in mind time zones and schedule regular stand-up meetings.',
+        'Ease the process of following up on apps stakeholders by dividing the project into milestones.'
       ])
 ];
