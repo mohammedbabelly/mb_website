@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mb_website/data/animation/fade_animation.dart';
 import 'package:mb_website/data/colors/app_colors.dart';
 import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:timelines/timelines.dart';
@@ -36,11 +37,14 @@ class ExperienceView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(Seeds.experiences[index].title,
-                            style: GoogleFonts.montserrat(
-                                fontSize: 30,
-                                color: TextColors.head,
-                                fontWeight: FontWeight.w500)),
+                        FadeAnimation(
+                          duration: Duration(milliseconds: 600),
+                          child: Text(Seeds.experiences[index].title,
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 30,
+                                  color: TextColors.head,
+                                  fontWeight: FontWeight.w500)),
+                        ),
                         _InnerTimeline(
                           points: Seeds.experiences[index].points,
                           subHead: Seeds.experiences[index].company,
@@ -107,7 +111,7 @@ class _InnerTimeline extends StatelessWidget {
                     size: 10.0,
                     position: 0.5,
                   ),
-            ),
+            ), //
             builder: TimelineTileBuilder(
               indicatorBuilder: (_, index) =>
                   !isEdgeIndex(index) ? Indicator.outlined() : null,
@@ -118,9 +122,12 @@ class _InnerTimeline extends StatelessWidget {
                   return null;
                 }
 
-                return Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(points[index - 1].toString()),
+                return FadeAnimation(
+                  duration: Duration(seconds: 1),
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(points[index - 1].toString()),
+                  ),
                 );
               },
               // itemExtentBuilder: (_, index) => 30.0,

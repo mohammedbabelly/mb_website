@@ -29,15 +29,23 @@ class AppRoutes {
           QRoute(
               name: about,
               path: '/about',
-              onInit: () => Get.lazyPut<AboutController>(
-                  () => AboutController(Seeds.about)),
+              onInit: () {
+                Get.find<HomePageController>().activePage.value =
+                    AppRoutes.about;
+                Get.lazyPut<AboutController>(
+                    () => AboutController(Seeds.about));
+              },
               onDispose: () => Get.delete<AboutController>(),
               page: (child) => AboutView()),
           QRoute(
               name: experience,
               path: '/experience',
-              // onInit: () => Get.lazyPut<AboutController>(
-              //     () => AboutController(Seeds.about)),
+              onInit: () {
+                Get.find<HomePageController>().activePage.value =
+                    AppRoutes.experience;
+                // Get.lazyPut<AboutController>(
+                //   () => AboutController(Seeds.about));
+              },
               // onDispose: () => Get.delete<AboutController>(),
               page: (child) => ExperienceView()),
         ]),

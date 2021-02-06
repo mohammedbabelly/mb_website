@@ -39,6 +39,10 @@ dependencies:
 
   flutter_animator: ^2.1.0
 
+  auto_animated: ^2.1.0
+
+  simple_animations: ^2.4.2
+
   scratcher: ^1.4.0 #remove
 
   slimy_card: ^1.0.4

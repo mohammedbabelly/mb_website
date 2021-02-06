@@ -85,15 +85,7 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                 alignment: Alignment(0.95, 0.95),
                 child: IconButton(
                   icon: Icon(Icons.close),
-                  onPressed: () {
-                    key1.currentState.reverse();
-                    key2.currentState.reverse();
-                    key3.currentState.reverse();
-                    key4.currentState.reverse();
-                    Future.delayed(Duration(milliseconds: 500), () {
-                      Navigator.of(context).pop();
-                    });
-                  },
+                  onPressed: () => closeDrawre(),
                   iconSize: 30.0,
                 ))
           ],
@@ -101,11 +93,21 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
       ),
     );
   }
-}
 
-void _goTo(path, context) {
-  QR.to(path);
-  Navigator.of(context).pop();
+  void closeDrawre() {
+    key1.currentState.reverse();
+    key2.currentState.reverse();
+    key3.currentState.reverse();
+    key4.currentState.reverse();
+    Future.delayed(Duration(milliseconds: 500), () {
+      Navigator.of(context).pop();
+    });
+  }
+
+  void _goTo(path, context) {
+    QR.to(path);
+    closeDrawre();
+  }
 }
 
 TextStyle drawerInactiveItemStyle = GoogleFonts.montserrat(
