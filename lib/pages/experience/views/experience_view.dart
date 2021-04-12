@@ -4,6 +4,7 @@ import 'package:mb_website/data/animation/fade_animation.dart';
 import 'package:mb_website/data/colors/app_colors.dart';
 import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:timelines/timelines.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const indicatorColor = Color(0xff989898);
 
@@ -47,7 +48,8 @@ class ExperienceView extends StatelessWidget {
                         ),
                         _InnerTimeline(
                           points: Seeds.experiences[index].points,
-                          subHead: Seeds.experiences[index].company,
+                          subHead: Seeds.experiences[index].company.name,
+                          url: Seeds.experiences[index].company.website,
                           date: Seeds.experiences[index].date,
                         ),
                       ],
@@ -72,12 +74,15 @@ class ExperienceView extends StatelessWidget {
 
 class _InnerTimeline extends StatelessWidget {
   const _InnerTimeline(
-      {@required this.points, @required this.subHead, @required this.date});
+      {@required this.points,
+      @required this.subHead,
+      @required this.date,
+      this.url});
 
   final List<String> points;
   final String subHead;
   final String date;
-
+  final String url;
   @override
   Widget build(BuildContext context) {
     bool isEdgeIndex(int index) {
@@ -92,12 +97,16 @@ class _InnerTimeline extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(subHead,
-                  style: GoogleFonts.lato(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w300,
-                      color: TextColors.head)),
+              InkWell(
+                onTap: url == null ? null : () => _launchURL(url),
+                child: Text(subHead,
+                    style: GoogleFonts.lato(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w300,
+                        color: TextColors.head)),
+              ),
+              Padding(padding: EdgeInsets.only(top: 10)),
               Text(date),
             ],
           ),
@@ -126,7 +135,10 @@ class _InnerTimeline extends StatelessWidget {
                   duration: Duration(seconds: 1),
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Text(points[index - 1].toString()),
+                    child: Text(
+                      points[index - 1].toString(),
+                      style: TextStyle(letterSpacing: 1),
+                    ),
                   ),
                 );
               },
@@ -140,4 +152,8 @@ class _InnerTimeline extends StatelessWidget {
       ),
     );
   }
+
+  void _launchURL(_url) async => await canLaunch(_url)
+      ? await launch(_url)
+      : throw 'Could not launch $_url';
 }
