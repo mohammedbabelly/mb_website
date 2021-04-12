@@ -10,4 +10,5 @@ var appTheme = ThemeData(
   accentColor: AppColors.accent,
   accentIconTheme: IconThemeData(color: Colors.black),
   scaffoldBackgroundColor: AppColors.background,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
 );
