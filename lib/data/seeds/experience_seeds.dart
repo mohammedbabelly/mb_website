@@ -1,13 +1,14 @@
 import 'package:mb_website/models/experience.dart';
 
+import '../constants.dart';
+
 List<Experience> experiencesSeed = [
   Experience(
       title: 'ACM CONTESTANT',
       company: Company(
           name: 'Syrian Collegiate Programming Contest',
           website: 'https://icpc.global/',
-          logo:
-              'https://drive.google.com/file/d/18CIlsFnnhCG69zd2ZtKBKFuQE3D6MuTq/view?usp=sharing'),
+          logo: '$driveImg 18CIlsFnnhCG69zd2ZtKBKFuQE3D6MuTq'),
       date: '2018-2019',
       points: [
         '4th place at the local contest.',
@@ -18,8 +19,7 @@ List<Experience> experiencesSeed = [
       company: Company(
           name: 'Injaz company',
           website: 'http://injazmediagroups.com/',
-          logo:
-              'https://drive.google.com/file/d/1FMAEqhLiPgRwEjtmuZDXLAWvNqK9t_d9/view?usp=sharing'),
+          logo: '$driveImg 1FMAEqhLiPgRwEjtmuZDXLAWvNqK9t_d9'),
       date: '2018 – 2021',
       points: [
         'App development department leader.',
@@ -32,8 +32,7 @@ List<Experience> experiencesSeed = [
       company: Company(
           name: 'BlueBits team',
           website: 'https://bluebitsteam.com/',
-          logo:
-              'https://drive.google.com/file/d/1ND-tfxKZ5DTQW55NH0soTwZf9NACR3PQ/view?usp=sharing'),
+          logo: '$driveImg 1ND-tfxKZ5DTQW55NH0soTwZf9NACR3PQ'),
       date: '2018 – present',
       points: [
         'Led up on the team’s technical activities.',
@@ -61,8 +60,7 @@ List<Experience> experiencesSeed = [
       company: Company(
           name: 'Solvait',
           website: 'https://www.solvait.com/',
-          logo:
-              'https://drive.google.com/file/d/1rjEV9QJh2ptFadSHMUP5XVlrD8gzaaF7/view?usp=sharing'),
+          logo: '$driveImg 1rjEV9QJh2ptFadSHMUP5XVlrD8gzaaF7'),
       date: '2020 – present',
       points: [
         'Developed an extensive experience in Human Resources as a business, Dynamics AX/365 & MS stack as a technology'
