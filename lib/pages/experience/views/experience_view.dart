@@ -99,12 +99,18 @@ class _InnerTimeline extends StatelessWidget {
             children: [
               InkWell(
                 onTap: url == null ? null : () => _launchURL(url),
-                child: Text(subHead,
-                    style: GoogleFonts.lato(
-                        fontStyle: FontStyle.italic,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w300,
-                        color: TextColors.head)),
+                child: Row(
+                  children: [
+                    Icon(Icons.link),
+                    SizedBox(width: 5),
+                    Text(subHead,
+                        style: GoogleFonts.lato(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w300,
+                            color: TextColors.head)),
+                  ],
+                ),
               ),
               Padding(padding: EdgeInsets.only(top: 10)),
               Text(date),

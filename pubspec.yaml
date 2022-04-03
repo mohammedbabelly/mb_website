@@ -38,6 +38,8 @@ dependencies:
 
   hover_effect: ^0.6.0
 
+  font_awesome_flutter: ^8.12.0
+
 
   #Logic
 
@@ -54,5 +56,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - assets/images/
+  # assets:
+    # - assets/images/

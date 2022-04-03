@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:mb_website/pages/about/controllers/about_controller.dart';
 import 'package:mb_website/pages/about/views/about_view.dart';
+import 'package:mb_website/pages/contact/view/contact_view.dart';
 import 'package:mb_website/pages/experience/views/experience_view.dart';
 import 'package:mb_website/pages/home_page/controllers/home_page_controller.dart';
 import 'package:mb_website/pages/home_page/views/home_page_view.dart';
@@ -58,6 +59,14 @@ class AppRoutes {
                     AppRoutes.experience;
               },
               page: (child) => ExperienceView()),
+          QRoute(
+              name: contact,
+              path: '/contact',
+              onInit: () {
+                Get.find<HomePageController>().activePage.value =
+                    AppRoutes.contact;
+              },
+              page: (child) => ContactView()),
         ]),
   ];
 }

@@ -66,7 +66,7 @@ class AppDrawer extends GetResponsiveView<HomePageController> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => _goTo('home/contact', context),
                   child: FadeInUp(
                     key: key4,
                     child: Text(
