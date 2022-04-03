@@ -6,7 +6,7 @@ import 'package:mb_website/data/seeds/seeds.dart';
 import 'package:timelines/timelines.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-const indicatorColor = Color(0xff989898);
+const indicatorColor = Colors.purple;
 
 class ExperienceView extends StatelessWidget {
   @override
