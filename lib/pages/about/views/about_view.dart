@@ -51,7 +51,7 @@ class AboutView extends GetResponsiveView<AboutController> {
           // ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 2),
+          margin: EdgeInsets.only(top: 2, right: 10, left: 10),
           height: 250,
           child: TypewriterAnimatedTextKit(
             text: [controller.about.value.about],
@@ -59,7 +59,7 @@ class AboutView extends GetResponsiveView<AboutController> {
             textStyle: GoogleFonts.lato(
                 fontWeight: FontWeight.w400,
                 height: 2,
-                fontSize: 20,
+                fontSize: isWebMobile ? 15 : 20,
                 textStyle: TextStyle(wordSpacing: 3),
                 color: TextColors.body),
             speed: Duration(milliseconds: 40),
