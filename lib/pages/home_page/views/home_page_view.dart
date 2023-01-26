@@ -4,6 +4,8 @@ import 'package:mb_website/widgets/drawer.dart';
 import 'package:qlevar_router/qlevar_router.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/footer.dart';
+
 // ignore: must_be_immutable
 class HomePageView extends GetResponsiveView<HomePageController> {
   final QRouter childRouter;
@@ -13,19 +15,20 @@ class HomePageView extends GetResponsiveView<HomePageController> {
   Widget build(_) {
     return Scaffold(
       body: childRouter,
-      floatingActionButton: Builder(
-        builder: (c) {
-          context = c.obs;
-          return IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context.value).openDrawer(),
-            iconSize: 30.0,
-          );
-        },
-      ),
-      drawer: Obx(() => AppDrawer(
-            context: context.value,
-          )),
+      // floatingActionButton: Builder(
+      //   builder: (c) {
+      //     context = c.obs;
+      //     return IconButton(
+      //       icon: Icon(Icons.menu),
+      //       onPressed: () => Scaffold.of(context.value).openDrawer(),
+      //       iconSize: 30.0,
+      //     );
+      //   },
+      // ),
+      // drawer: Obx(() => AppDrawer(
+      //       context: context.value,
+      //     )),
+      bottomSheet: AppFooter(),
     );
   }
 }

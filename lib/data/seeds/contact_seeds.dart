@@ -4,15 +4,15 @@ import 'package:mb_website/models/contact.dart';
 List<ContactModel> ContactSeeds = [
   ContactModel(
       name: "Email",
-      icon: FontAwesomeIcons.at,
+      icon: FontAwesomeIcons.envelope,
       color: 0xFFEC6746,
       link:
           "mailto:mohammedababelly@gmail.com?subject=Contact Mohammed Babelly From Website&body=Hey Mohammed,"),
   ContactModel(
       name: "Phone",
-      icon: FontAwesomeIcons.mobile,
+      icon: FontAwesomeIcons.phoneAlt,
       color: 0xFF283E2D,
-      link: "tel:+963 969132267"),
+      link: "tel:+971 55 840 1395"),
   ContactModel(
       name: "LinkedIn",
       icon: FontAwesomeIcons.linkedinIn,
