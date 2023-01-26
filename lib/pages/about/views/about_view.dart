@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hover_effect/hover_effect.dart';
 import 'package:mb_website/data/colors/app_colors.dart';
-
+import 'package:flutter/foundation.dart';
 import '../controllers/about_controller.dart';
 
 class AboutView extends GetResponsiveView<AboutController> {
+  final isWebMobile = kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.android);
   @override
   Widget build(BuildContext c) {
     return Center(
@@ -25,7 +28,7 @@ class AboutView extends GetResponsiveView<AboutController> {
                     child: Text(controller.about.value.head,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
-                            fontSize: 30,
+                            fontSize: isWebMobile ? 20 : 30,
                             fontWeight: FontWeight.w700,
                             color: TextColors.head)),
                   );
