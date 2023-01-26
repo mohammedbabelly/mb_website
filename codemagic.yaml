@@ -1,0 +1,37 @@
+workflows:
+  web-workflow:
+    name: Web Workflow
+    instance_type: linux_x2
+    max_build_duration: 60
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "*"
+          include: true
+    environment:
+      vars:
+        SSH_PATH: /var/www/mohammedbabelly.tech/
+      groups:
+        - tt_server # Includes (SSH_HOST, SSH_USERNAME, SSH_PASSWORD)
+      flutter: stable
+    scripts:
+      - name: Set up local.properties
+        script: |
+          #!/usr/bin/env zsh 
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - flutter config --enable-web
+      - name: Build Web
+        script: |
+          flutter build web --release
+    artifacts:
+      - build/web.zip
+    publishing:
+      scripts:
+        - name: Copy files over SSH
+          script: |
+            curl -L https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb > sshpass.rb && brew install sshpass.rb && rm sshpass.rb
+            sshpass -p "$SSH_PASSWORD" scp -r web $SSH_USERNAME@$SSH_HOST:$SSH_PATH          
