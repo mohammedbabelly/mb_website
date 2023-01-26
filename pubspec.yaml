@@ -43,7 +43,7 @@ dependencies:
 
   #Logic
 
-  get: ^3.24.0
+  get: ^3.25.0
 
   qlevar_router: ^0.2.2
 
